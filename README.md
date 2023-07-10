@@ -7,3 +7,4 @@ Final Fantasy VII, Resident Evil y Metal Gear.
 Los retos que hice:
 * Poner un boton para terminar el juego y mostrar su score.
 * Mostrar al final del juego el puntaje mayor con PlayerPrefs.
+* Agregue un botón para reiniciar el juego o salir de el una vez terminadas las preguntas.
