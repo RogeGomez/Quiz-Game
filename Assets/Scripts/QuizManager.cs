@@ -140,5 +140,12 @@ public class QuizManager : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit's the game");
     }
+
+    public void EndGame()
+    {
+        quizPanel.SetActive(false);
+        gameOverPanel.SetActive(true);
+        finalScoreText.text = "Final Score: " + score.ToString();
+    }
 }
 
