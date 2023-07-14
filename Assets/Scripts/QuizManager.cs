@@ -21,7 +21,7 @@ public class QuizManager : MonoBehaviour
     private Color redColor;
     private Answer answer;
     private int finalScore;
-    private int bestSCore;
+    private int bestsCore;
 
     // Will generate a random question
     private void Start()
@@ -47,8 +47,8 @@ public class QuizManager : MonoBehaviour
         }
         scoreText.text = "Score: " + score.ToString();
         finalScore = score;
-        bestScoreText.text = "Best Score: " + bestSCore.ToString();
-        bestSCore = PlayerPrefs.GetInt("bestScore", 0);
+        bestScoreText.text = "Best Score: " + bestsCore.ToString();
+        bestsCore = PlayerPrefs.GetInt("bestScore", 0);
     }
 
     // The for takes the 4 buttons text, and puts the answers options in their current positions
@@ -106,14 +106,21 @@ public class QuizManager : MonoBehaviour
         quizPanel.SetActive(false);
         gameOverPanel.SetActive(true);
 
-        finalScoreText.text = "Final Score: " + score.ToString();
+        if (score >= 0)
+        {
+            finalScoreText.text = "Final Score: " + score.ToString();
+        }
+        else
+        {
+            finalScoreText.text = "Final Score: 0";
+        }
     }
 
     // When answered the question removes the previous question and generates another
     public void CorrectAnswer()
     {
         score += 100;
-        if (bestSCore < score)
+        if (bestsCore < score)
         {
             PlayerPrefs.SetInt("bestScore", score);
         }
@@ -145,7 +152,16 @@ public class QuizManager : MonoBehaviour
     {
         quizPanel.SetActive(false);
         gameOverPanel.SetActive(true);
-        finalScoreText.text = "Final Score: " + score.ToString();
+        // finalScoreText.text = "Final Score: " + score.ToString();
+
+        if (score >= 0)
+        {
+            finalScoreText.text = "Final Score: " + score.ToString();
+        }
+        else
+        {
+            finalScoreText.text = "Final Score: 0";
+        }
     }
 }
 
